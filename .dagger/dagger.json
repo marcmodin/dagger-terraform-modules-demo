@@ -1,0 +1,22 @@
+{
+  "name": "dagger",
+  "engineVersion": "v0.18.2",
+  "sdk": {
+    "source": "go"
+  },
+  "dependencies": [
+    {
+      "name": "commitlint",
+      "source": "github.com/fcanovai/daggerverse/commitlint@ecd31bc86ff0d416f2cecd2c7c5dad5770941cd8",
+      "pin": "ecd31bc86ff0d416f2cecd2c7c5dad5770941cd8"
+    },
+    {
+      "name": "localstack",
+      "source": "localstack"
+    },
+    {
+      "name": "pre-commit",
+      "source": "pre-commit"
+    }
+  ]
+}

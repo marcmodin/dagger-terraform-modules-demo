@@ -1,5 +1,5 @@
 {
-  "name": "pctf",
+  "name": "pre-commit",
   "engineVersion": "v0.18.2",
   "sdk": {
     "source": "go"
