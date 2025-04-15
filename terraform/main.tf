@@ -1,3 +1,7 @@
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+}
+
 resource "aws_sqs_queue" "queue" {
   name = var.queue_name
 
@@ -17,10 +21,6 @@ resource "aws_sqs_queue" "queue" {
   ]
 }
 POLICY
-}
-
-resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {

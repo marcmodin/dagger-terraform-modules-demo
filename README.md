@@ -2,6 +2,8 @@
 
 A demonstration of Dagger CI/CD pipeline orchestration with modular components for common Terraform workflows.
 
+![astronaut and a robot showing a workflow](astronaut.png)
+
 ### Requirements
 
 - dagger-cli
