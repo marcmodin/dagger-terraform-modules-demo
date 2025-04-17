@@ -6,6 +6,10 @@
   },
   "dependencies": [
     {
+      "name": "comment",
+      "source": "comment"
+    },
+    {
       "name": "commitlint",
       "source": "github.com/fcanovai/daggerverse/commitlint@ecd31bc86ff0d416f2cecd2c7c5dad5770941cd8",
       "pin": "ecd31bc86ff0d416f2cecd2c7c5dad5770941cd8"

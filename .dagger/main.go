@@ -13,19 +13,20 @@ type Dagger struct{}
 // Test runs terraform plan and apply against localstack
 // usage:  dagger call test --directory terraform
 func (d *Dagger) Test(
-	// +optional
+	// +defaultPath="../terraform"
 	directory *dagger.Directory,
 ) (string, error) {
 
 	ctx := context.Background()
 
-	localstack := dag.Localstack().Serve()
+	localstack := dag.Localstack().Serve().WithHostname("localstack")
+
 	localstack_endpoint, _ := localstack.Endpoint(ctx)
 
 	terraform, err := dag.Container().
 		From("hashicorp/terraform:latest").
 		WithServiceBinding("localstack", localstack).
-		WithEnvVariable("AWS_ENDPOINT_URL", localstack_endpoint).
+		WithEnvVariable("AWS_ENDPOINT_URL", fmt.Sprintf("http://%s", localstack_endpoint)).
 		WithDirectory("/src", directory).
 		WithWorkdir("/src").
 		WithExec([]string{"terraform", "init"}).
@@ -39,7 +40,10 @@ func (d *Dagger) Test(
 }
 
 // Lint runs the pre-commit and commitlint linters
-func (d *Dagger) Lint(directory *dagger.Directory) (string, error) {
+func (d *Dagger) Lint(
+	// +defaultPath="../"
+	directory *dagger.Directory,
+) (string, error) {
 
 	dir := directory.Filter(dagger.DirectoryFilterOpts{
 		Include: []string{".git", "terraform", ".pre-commit-config.yaml", "commitlint.config.mjs"},
