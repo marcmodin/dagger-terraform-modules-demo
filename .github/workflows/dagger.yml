@@ -3,6 +3,14 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths-ignore:
+      - '*.md'
+      - '*.png'
+      - '*.yaml'
+      - '.gitignore'
+      - '.gitattributes'
+      - 'devbox.json'
+      - 'devbox.lock'
 
 jobs:
   lint-and-test:
